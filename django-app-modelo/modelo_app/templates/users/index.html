@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/users.css' %}">
+    </head>
+    <body>
+        <h1> html de users </h1>
+        <h1> {{Titulo}} </h1>
+        <!--  ->
+        <ul class="user-list">
+            {% for usuario in Usuarios %}
+                <li class="user-item">
+                    <h2>{{ usuario.name }}</h2>
+                    <p>ID: {{ usuario.id }}</p>
+                    <p>Age: {{ usuario.age }}</p>
+                    <img src="{{ usuario.photo }}" alt="Foto de {{ usuario.name }}" class="user-photo">
+                </li>
+            {% endfor %}
+        </ul>
+        -->
+        <div class="container">
+            {% for usuario in Usuarios %}
+                <div class="user-item">
+                    <img src="{{ usuario.photo }}" alt="Foto de {{ usuario.name }}" class="user-photo">
+                    <div class="user-info">
+                        <p class="user-name">{{ usuario.name }}</p>
+                        <p><strong>ID:</strong> {{ usuario.id }}</p>
+                        <p><strong>Age:</strong> {{ usuario.age }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
