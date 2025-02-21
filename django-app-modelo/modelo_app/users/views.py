@@ -55,3 +55,10 @@ def userDetail(request, id):
         "user": user
     }
     return render(request, "users/detail.html", data)
+
+def userList(request):
+    users = User.objects.all()
+    data = {
+        "users": users
+    }
+    return render(request, "users/userList.html", data)

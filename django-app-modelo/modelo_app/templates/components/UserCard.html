@@ -1,0 +1,15 @@
+<h1>Este es el componente de user card</h1>
+<div class="user-card-container">
+    <div>
+        <img src="" alt="">
+    </div>
+
+    <div>
+        <p><strong>Name</strong> <br> {{name}} </p>
+        <p><strong>Email</strong> <br> {{email}} </p>
+    </div>
+
+    <div>
+        <a href="{% url 'userDetail' id %}">Ver</a>
+    </div>
+</div>
