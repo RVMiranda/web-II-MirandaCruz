@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import User
+from .models import User, User_Address
 from django.shortcuts import get_object_or_404
 import json
 from django.http import JsonResponse
@@ -53,8 +53,10 @@ def createUser(request):
 
 def userDetail(request, id):
     user = get_object_or_404(User, id=id)
+    addresses = User_Address.objects.filter(user=user)
     data = {
-        "user": user
+        "user": user,
+        "addresses": addresses
     }
     return render(request, "users/detail.html", data)
 
@@ -73,3 +75,54 @@ def createUserByFetch(request):
         "status": "success",
         "user": body
     })
+
+def updateUser(request, id):
+    user = get_object_or_404(User, id=id)
+    addresses = User_Address.objects.filter(user=user)
+    data = {
+        "user": user,
+        "addresses": addresses
+    }
+    try:
+        
+        if request.method == "POST":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            age = request.POST.get("age") 
+            rfc = request.POST.get("rfc")
+            photo = request.POST.get("photo")
+            user.name = name
+            user.email = email
+            user.age = age
+            user.rfc = rfc
+            user.photo = photo
+            user.save()
+
+            data["user"] = {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+                "age": user.age,
+                "rfc": user.rfc,
+                "photo": user.photo if user.photo else None
+            }
+            data["message"] = "Usuario actualizado correctamente"
+            data["status"] = "success"
+        else:
+            data["user"] = {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+                "age": user.age,
+                "rfc": user.rfc,
+                "photo": user.photo if user.photo else None
+            }
+            data["message"] = "Usuario obtenido correctamente"
+            data["status"] = "success"
+    except Exception as e:
+        data = {
+            "message": str(e),
+            "status": "error"
+        }
+    
+    return render(request, "users/update.html", data)

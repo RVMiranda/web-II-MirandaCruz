@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'css/users.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/UserCard.css' %}">
     </head>
     <body>
-        <h1> html de users </h1>
-        <h1> {{Titulo}} </h1>
+        <h1> Welcome to Users Dashboard </h1>
+        
         <!--  ->
+        <h1> {{Titulo}} </h1>
         <ul class="user-list">
             {% for usuario in Usuarios %}
                 <li class="user-item">
@@ -22,17 +23,23 @@
             {% endfor %}
         </ul>
         -->
+        <div>
+            <a href="{% url 'userList' %}" class="btn-detail"> Ver lista completa </a>
+        </div>
+
         <div class="container">
+            
             {% for usuario in Usuarios %}
                 <div class="user-item">
                     <img src="{{ usuario.photo }}" alt="Foto de {{ usuario.name }}" class="user-photo">
                     <div class="user-info">
                         <p class="user-name">{{ usuario.name }}</p>
-                        <p><strong>ID:</strong> {{ usuario.id }}</p>
-                        <p><strong>Age:</strong> {{ usuario.age }}</p>
+                        <!--<p><strong>ID:</strong> {{ usuario.id }}</p> -->
+                        <p><strong>Age:</strong> {{ usuario.age }}</p> 
                     </div>
                 </div>
             {% endfor %}
+            
         </div>
     </body>
 </html>

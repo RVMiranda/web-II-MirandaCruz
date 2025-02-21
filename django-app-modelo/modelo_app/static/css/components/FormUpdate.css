@@ -1,0 +1,65 @@
+/* Contenedor principal del formulario */
+form {
+    max-width: 400px;       /* ancho máximo */
+    margin: 0 auto;         /* centra el formulario en la página */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* fondo blanco, si lo deseas */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Cada campo del formulario como un bloque vertical */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  /* Etiquetas de cada campo */
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Inputs */
+  .form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Imagen previa */
+  .current-photo {
+    width: 100%;
+    max-width: 200px;      /* Si quieres limitar el tamaño de la foto */
+    margin-top: 10px;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+  }
+  
+/* Botón de enviar */
+.btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:#0f7ae5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+    align-items: center;
+}
+  
+.btn-submit:hover {
+    background-color:#2ceb36;
+    color: #000;
+}
+
+.button-wrapper {
+    text-align: center; /* Centra el botón horizontalmente */
+    margin-top: 20px;
+}

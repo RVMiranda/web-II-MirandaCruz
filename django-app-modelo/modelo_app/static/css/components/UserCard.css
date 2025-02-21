@@ -1,0 +1,75 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+/* Título */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de Usuarios */
+.container {
+    display: grid;
+    /*grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjetas de Usuario */
+.user-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagen de Usuario */
+.user-photo {
+    width: 300px; /* Ancho fijo */
+    height: 300px; /* Alto fijo */
+    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformarla */
+    border-radius: 10px;
+}
+
+/* Información del Usuario */
+.user-info {
+    padding: 10px;
+    width: 100%;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.btn-detail {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* color a tu gusto */
+    color: #fff;
+    text-decoration: none;    /* quita subrayado */
+    border-radius: 5px;      /* esquinas redondeadas */
+    margin-top: 10px;        /* espacio arriba para separarlo de la info */
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-detail:hover {
+    background-color: #2980b9; /* efecto hover */
+  }
+  

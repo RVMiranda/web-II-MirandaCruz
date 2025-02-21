@@ -2,14 +2,14 @@
 
 {% load static %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/UserCard.css' %}">
 {% endblock %}
 
 {% block content %}
 <h1> Users </h1>
 <div>
     {% for user in users %}
-    {% include 'components/UserCard.html' with name=user.name email=user.email id=user.id %}
+    {% include 'components/UserCard.html' with photo=user.photo name=user.name email=user.email id=user.id %}
     {% endfor %}
 
 </div>

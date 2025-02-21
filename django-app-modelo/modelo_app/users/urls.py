@@ -8,4 +8,5 @@ urlpatterns = [
     path("detail/<int:id>", views.userDetail, name="userDetail"),
     path("user-list", views.userList, name="userList"),
     path("createUserByFetch/", views.createUserByFetch, name="createUserByFetch"),
+    path("update/<int:id>", views.updateUser, name="updateUser"),
 ]

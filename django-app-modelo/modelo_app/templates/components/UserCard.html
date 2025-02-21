@@ -1,15 +1,17 @@
-<h1>Este es el componente de user card</h1>
-<div class="user-card-container">
-    <div>
-        <img src="" alt="">
-    </div>
 
-    <div>
-        <p><strong>Name</strong> <br> {{name}} </p>
-        <p><strong>Email</strong> <br> {{email}} </p>
+<div class="user-card-container container">
+    <div class="user-item">
+        <div >
+            <img class="user-photo" src="{{photo}}" alt="Foto de {{name}}">
+        </div>    
+        <div class="user-info">
+            <p><strong>Name</strong> <br> {{name}} </p>
+            <p><strong>Email</strong> <br> {{email}} </p>
+            <p><strong>ID: </strong> {{id}} </p>
+        </div>
+        <div>
+            <a href="{% url 'userDetail' id %}" class="btn-detail"> Ver detalle </a>
+        </div>
     </div>
-
-    <div>
-        <a href="{% url 'userDetail' id %}">Ver</a>
-    </div>
-</div>
+    
+</div> 

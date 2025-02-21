@@ -1,0 +1,62 @@
+.Titulo {
+    text-align: center;  /* Centra el contenido del div Titulo */
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+
+.container{
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sección de direcciones */
+.addresses-section {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilo para el HR */
+  .addresses-section hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  
+  /* Título de direcciones */
+  .addresses-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Tabla de direcciones */
+  .address-table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 700px;    /* Ajusta según tu preferencia */
+    margin: 0 auto;      /* Centra la tabla */
+  }
+  
+  /* Encabezado de la tabla */
+  .address-table thead {
+    background-color: #f7f7f7;
+  }
+  
+  .address-table th,
+  .address-table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  
+  .address-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Filas pares con color de fondo sutil */
+  .address-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  

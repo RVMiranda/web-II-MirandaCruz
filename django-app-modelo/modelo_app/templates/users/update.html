@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/components/FormUpdate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/update.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="Titulo">
+    <h1>Actualizar Usuario</h1>
+</div>
+
+{% include 'components/FormUpdate.html' %}
+
+
+<div class="addresses-section">
+    <hr>
+    <h2>Direcciones del Usuario</h2>
+    
+    <table class="address-table">
+      <thead>
+        <tr>
+          <th>Calle</th>
+          <th>Ciudad</th>
+          <th>Código Postal</th>
+          <th>Pais</th>
+          <!-- Agrega más columnas si es necesario -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for address in addresses %}
+          <tr>
+            <td>{{ address.street }}</td>
+            <td>{{ address.city }}</td>
+            <td>{{ address.zip_code }}</td>
+            <td>{{ address.country }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4">No hay direcciones para este usuario.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}
