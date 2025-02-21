@@ -1,0 +1,50 @@
+/* Footer principal */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% de la altura de la ventana */
+}
+
+main {
+    flex: 1; /* Se expande para ocupar el espacio vertical restante */
+}
+
+footer {
+    background-color: #1d4b9b; /* Mismo color de fondo que el nav */
+    color: #fff;              /* Texto en blanco */
+    text-align: center;       /* Centrado del contenido */
+    padding: 20px;            /* Espacio interno */
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Texto dentro del footer */
+  footer p {
+    margin: 0; 
+    font-size: 0.95rem;
+  }
+  
+  /* Sección adicional para links (redes sociales, secciones extra, etc.) */
+  .footer-extra {
+    margin-top: 10px; /* Espacio por encima de los enlaces */
+  }
+  
+  /* Estilos para los enlaces del footer */
+  .footer-extra a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 10px; 
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  
+  .footer-extra a:hover {
+    color: #fff; /* Cambia a blanco al pasar el mouse */
+  }
+  

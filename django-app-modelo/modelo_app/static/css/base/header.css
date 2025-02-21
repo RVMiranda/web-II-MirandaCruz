@@ -1,0 +1,65 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal del nav */
+.main-nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1d4b9b; /* color de fondo del nav */
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  /* Logo */
+  .logo a {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Contenedor de las secciones (Órdenes y Usuarios) */
+  .nav-sections {
+    display: flex;
+    gap: 30px;   /* Espacio horizontal entre secciones */
+    
+  }
+  
+  /* Cada sección individual */
+  .nav-section {
+    color: #fff; /* texto blanco para el título y enlaces */
+  }
+  
+  .nav-section h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  
+  /* Lista de enlaces */
+  .nav-section ul {
+    list-style: none;  /* quita viñetas */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-section li {
+    margin-bottom: 5px; /* separación entre links */
+  }
+  
+  .nav-section a {
+    color: #ccc;        /* color claro en los enlaces */
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  
+  .nav-section a:hover {
+    color: #fff;        /* se pone blanco al hover */
+  }
+  

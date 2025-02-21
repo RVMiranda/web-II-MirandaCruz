@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1> {{ user.name }} </h1>
-        
-        {{ user.email }}
-        {{ user.age }}
-        {{ user.rfc }}
-        {{ user.photo }}
-    </body>
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1> {{ user.name }} </h1>
+    
+    {{ user.email }}
+    {{ user.age }}
+    {{ user.rfc }}
+    {{ user.photo }}
+
     <div>
         <a href="{% url 'updateUser' user.id %}" class="btn-detail"> Actualizar info </a>
-    </div>
-</html>
+    <div>
+{% endblock %}
+
+

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<h1> Users </h1>
+<h1> Lista de usuarios </h1>
 <div>
     {% for user in users %}
     {% include 'components/UserCard.html' with photo=user.photo name=user.name email=user.email id=user.id %}
