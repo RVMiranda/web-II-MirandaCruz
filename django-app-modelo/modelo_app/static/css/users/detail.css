@@ -1,0 +1,69 @@
+/* Contenedor principal: usa Flexbox para alinear izquierda/derecha */
+.user-detail-container {
+    display: flex;
+    align-items: flex-start;    /* Alinea elementos en la parte superior (left/right) */
+    justify-content: center;    /* Centra horizontalmente el conjunto */
+    max-width: 900px;           /* Ajusta el ancho máximo según tu preferencia */
+    margin: 40px auto;          /* Centra el contenedor en la página */
+    padding: 20px;
+    background-color: #f9f9f9;  /* Fondo claro */
+    border-radius: 8px;         /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Columna izquierda (imagen) */
+  .user-detail-left {
+    flex: 0 0 auto;       /* Mantiene un ancho fijo basado en el contenido (la imagen) */
+    margin-right: 20px;   /* Espacio entre la imagen y la info */
+  }
+  
+  /* Imagen del usuario */
+  .user-photo {
+    max-width: 200px;   /* Ajusta el tamaño de la imagen */
+    border-radius: 4px; 
+    display: block;     /* Para asegurarnos de que se muestre como bloque */
+  }
+  
+  /* Columna derecha (información) */
+  .user-detail-right {
+    flex: 1;             /* Ocupa todo el espacio restante */
+  }
+  
+  /* Título (nombre del usuario) */
+  .user-detail-right h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Párrafos de información */
+  .user-detail-right p {
+    font-size: 1rem;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  /* Contenedor para centrar el botón */
+  .btn-container {
+    text-align: center; /* Centra horizontalmente el botón */
+    margin-top: 20px;
+  }
+  
+  /* Botón para actualizar info */
+  .btn-detail {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1d4b9b; 
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  /* Hover del botón */
+  .btn-detail:hover {
+    background-color: #163d7f;
+  }
+  

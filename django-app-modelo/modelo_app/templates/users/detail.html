@@ -1,16 +1,30 @@
 {% extends 'base/base.html' %}
 
-{% block content %}
-    <h1> {{ user.name }} </h1>
-    
-    {{ user.email }}
-    {{ user.age }}
-    {{ user.rfc }}
-    {{ user.photo }}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/users/detail.css' %}">
+{% endblock %}
 
-    <div>
-        <a href="{% url 'updateUser' user.id %}" class="btn-detail"> Actualizar info </a>
-    <div>
+{% block content %}
+<div class="user-detail-container">
+    <!-- Columna izquierda: imagen -->
+    <div class="user-detail-left">
+      <img src="{{ user.photo }}" alt="User Photo" class="user-photo" />
+    </div>
+  
+    <!-- Columna derecha: datos del usuario -->
+    <div class="user-detail-right">
+      <h1>{{ user.name }}</h1>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Edad:</strong> {{ user.age }}</p>
+      <p><strong>RFC:</strong> {{ user.rfc }}</p>
+      
+      <!-- Contenedor para centrar el botón -->
+      <div class="btn-container">
+        <a href="{% url 'updateUser' user.id %}" class="btn-detail">Actualizar info</a>
+      </div>
+    </div>
+</div>
 {% endblock %}
 
 
