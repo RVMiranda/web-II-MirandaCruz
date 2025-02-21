@@ -28,4 +28,7 @@ def indexOrders(request):
     }
     return render(request, "orders/index.html", data)
 
+def homeIndex(request):
+    return render(request, "home/index.html")
+
 # Create your views here.
