@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<form method="POST" action="{% url 'createUser' %}">
-    {% csrf_token %}
+<form method="POST" action="{% url 'createUser' %}" id="create-user-form">
+    <input id="csrf_token" value="{{ csrf_token }}" hidden>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
 
@@ -17,6 +17,14 @@
     <label for="photo">Photo URL:</label>
     <input type="text" id="photo" name="photo" required><br>
 
-    <button type="submit">Create User</button>
+    <button id="create-user-button">Create User</button>
 </form>
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+<script>
+    const USER_CREATE_URL = "{% url 'createUserByFetch' %}";
+</script>
+<script src="{% static 'js/createUser.js' %}"></script>
 {% endblock %}

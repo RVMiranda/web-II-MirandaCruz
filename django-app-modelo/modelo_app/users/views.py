@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import User
 from django.shortcuts import get_object_or_404
+import json
+from django.http import JsonResponse
 # Create your views here.
 
 def indexUsers(request):
@@ -62,3 +64,12 @@ def userList(request):
         "users": users
     }
     return render(request, "users/userList.html", data)
+
+def createUserByFetch(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    return JsonResponse({
+        "message": "Usuario creado correctamente",
+        "status": "success",
+        "user": body
+    })
