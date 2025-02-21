@@ -1,1 +1,13 @@
 {% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="work-in-progress">
+    <div class="spinner"></div>
+    <p>Work in Progress...</p>
+</div>
+{% endblock %}

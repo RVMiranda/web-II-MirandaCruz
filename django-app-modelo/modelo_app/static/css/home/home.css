@@ -1,0 +1,37 @@
+/* Contenedor principal */
+.work-in-progress {
+    display: flex;             /* Para centrar contenido en bloque */
+    flex-direction: column;    /* Colocar spinner arriba y texto abajo */
+    align-items: center;       /* Centrar horizontalmente */
+    justify-content: center;   /* Centrar verticalmente */
+    height: 100vh;             /* Ocupa toda la altura de la ventana */
+    margin: 0;
+    background-color: #f9f9f9; /* Color de fondo suave */
+  }
+  
+  /* Estilo del spinner */
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;         /* Borde gris claro */
+    border-top-color: #1d4b9b;      /* Color principal en la parte superior */
+    border-radius: 50%;            /* Forma circular */
+    animation: spin 1s linear infinite; 
+    margin-bottom: 20px;           /* Separación respecto al texto */
+  }
+  
+  /* Animación de giro */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Estilo del texto */
+  .work-in-progress p {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
