@@ -1,0 +1,62 @@
+/* Contenedor de eventos en cuadrícula */
+.eventos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Tarjeta de evento */
+.evento-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.evento-card:hover {
+    transform: scale(1.05);
+}
+
+/* Imagen del evento */
+.evento-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Información del evento */
+.evento-info {
+    padding: 15px;
+}
+
+.evento-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.evento-info p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Botón de boletos */
+.evento-boton {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.evento-boton:hover {
+    background-color: #0056b3;
+}

@@ -1,31 +1,22 @@
 <nav class="main-nav">
-    <!-- Logo o nombre de la compañía -->
-    <div class="logo">
+  <!-- Logo o Nombre de la Compañía -->
+  <div class="logo">
       <a href="/">Nahual Company</a>
-    </div>
-  
-    <!-- Contenedor de las secciones -->
-    <div class="nav-sections">
-      
-      <!-- Sección de Órdenes -->
-      <div class="nav-section">
-        <h3>Órdenes</h3>
-        <ul>
-            <li><a href="/orders/home">Home</a></li>
-        </ul>
+  </div>
+
+  <!-- Contenedor de navegación -->
+  <div class="nav-container">
+      <!-- Sección izquierda: Index -->
+      <div class="nav-left">
+          <a href="{% url 'examenIndex' %}">Index</a>
       </div>
-  
-      <!-- Sección de Usuarios -->
-      <div class="nav-section">
-        <h3>Usuarios</h3>
-        <ul>
-          <!-- Ajusta estas rutas a tus URLs reales -->
-          <li><a href="">Home</a></li>
-          <li><a href="">Lista de Usuarios</a></li>
-          <li><a href="">Crear Ssuario</a></li>
-        </ul>
+
+      <!-- Sección derecha: Eventos, Boletos, Productos, Admin -->
+      <div class="nav-right">
+          <a href="{% url 'Eventos' %}">Eventos</a>
+          <a href="{% url 'Boletos' %}">Boletos</a>
+          <a href="">Productos</a>
+          <a href="">Admin</a>
       </div>
-  
-    </div> <!-- fin nav-sections -->
-  </nav>
-  
+  </div>
+</nav>
