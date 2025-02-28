@@ -1,4 +1,4 @@
-/* ========== RESET BÁSICO ========== */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ========== FILAS DE IMÁGENES ========== */
 .row-2-images, 
 .row-3-images {
     display: flex;
@@ -31,7 +30,6 @@ body {
     border-radius: 5px;
 }
 
-/* ========== SECCIÓN DE NOTICIAS Y EVENTOS ========== */
 .noticias-section {
     margin: 40px 0;
     text-align: center;
@@ -42,23 +40,20 @@ body {
     margin-bottom: 10px;
 }
 
-/* Contenedor de Noticias y Eventos */
 .noticias-content {
     display: flex;
     gap: 20px;
     margin-top: 20px;
 }
 
-/* Columnas de Noticias y Eventos */
 .col-noticias, 
 .col-eventos {
-    flex: 1; /* Ambas columnas toman el mismo tamaño */
+    flex: 1; 
     background-color: #fff;
     padding: 15px;
     border-radius: 5px;
 }
 
-/* ======== ESTILOS GENERALES PARA NOTICIAS Y EVENTOS ======== */
 .col-noticias h3, 
 .col-eventos h3 {
     font-size: 18px;
@@ -67,11 +62,10 @@ body {
     text-align: center;
 }
 
-/* ======== NOTICIAS Y EVENTOS (Mismo Diseño) ======== */
 .noticia-item, 
 .evento-item {
     margin-bottom: 20px;
-    text-align: center; /* Centrar contenido */
+    text-align: center; 
 }
 
 .noticia-item img, 
@@ -83,7 +77,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Estilos de texto para noticias y eventos */
 .noticia-item h4, 
 .evento-item h4 {
     font-size: 16px;

@@ -26,9 +26,9 @@ def examenIndex(request):
 
 
 def boletosView(request):
-    boletos = Boleto.objects.select_related('tipo_boleto', 'evento').all()  # Optimiza consultas
+    boletos = Boleto.objects.select_related('tipo_boleto', 'evento').all()
     return render(request, 'examen/boletos.html', {'boletos': boletos})
 
 def eventosView(request):
-    eventos = Evento.objects.select_related('localidad').all()  # Optimiza consultas
+    eventos = Evento.objects.select_related('localidad').all()
     return render(request, 'examen/eventos.html', {'eventos': eventos})

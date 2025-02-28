@@ -12,19 +12,14 @@
     <div class="boletos-container">
         {% for boleto in boletos %}
             <div class="boleto-item">
-                <!-- Imagen del boleto -->
                 <img src="{% static 'images/' %}{{ boleto.tipo_boleto.nombre|lower }}.png" alt="{{ boleto.tipo_boleto.nombre }}">
 
-                <!-- Evento (destacado) -->
                 <p class="boleto-evento">{{ boleto.evento.nombre }}</p>
 
-                <!-- Tipo de boleto -->
                 <p class="boleto-tipo">{{ boleto.tipo_boleto.nombre }}</p>
 
-                <!-- Precio -->
                 <p class="boleto-precio">Precio: ${{ boleto.precio }}</p>
-
-                <!-- Botón de compra -->
+                
                 <button class="boleto-comprar">Comprar</button>
             </div>
         {% endfor %}

@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
@@ -6,16 +6,14 @@ body {
     text-align: center;
 }
 
-/* Contenedor de los boletos */
 .boletos-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Distribución flexible */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
     justify-content: center;
     padding: 20px;
 }
 
-/* Estilos individuales de cada boleto */
 .boleto-item {
     background-color: #fff;
     padding: 15px;
@@ -25,11 +23,10 @@ body {
     transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Hace que el botón siempre esté en la parte inferior */
+    justify-content: space-between; 
     min-height: 320px; 
 }
 
-/* Contenedor de contenido para evitar que el botón suba */
 .boleto-content {
     flex-grow: 1;
 }
@@ -38,40 +35,35 @@ body {
     transform: scale(1.05);
 }
 
-/* Imagen del boleto */
 .boleto-item img {
     width: 100%;
-    max-width: 200px; /* Control del tamaño */
+    max-width: 200px; 
     height: auto;
     margin-bottom: 10px;
-    display: block;   /* Hace que la imagen sea un bloque */
+    display: block; 
     margin: 0 auto;
 }
 
-/* Estilo del evento (destacado) */
 .boleto-evento {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #d9534f; /* Rojo para destacar */
+    color: #d9534f; 
     margin-bottom: 5px;
 }
 
-/* Estilo del tipo de boleto */
 .boleto-tipo {
     font-size: 1rem;
     font-weight: bold;
-    color: #0275d8; /* Azul para diferenciar */
+    color: #0275d8;
     margin-bottom: 10px;
 }
 
-/* Precio */
 .boleto-precio {
     font-size: 1rem;
     color: #333;
     margin-bottom: 10px;
 }
 
-/* Botón de compra */
 .boleto-comprar {
     background-color: #333;
     color: #fff;
