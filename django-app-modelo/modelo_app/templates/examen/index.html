@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %} Index Examen{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/examen/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Fila de 2 imágenes -->
+    <div class="row-2-images">
+        <img src="{% static 'images/carnaval6.png' %}" alt="Carnaval 1">
+        <img src="{% static 'images/carnaval2.jpg' %}" alt="Carnaval 2">
+    </div>
+    
+    <!-- Fila de 3 imágenes -->
+    <div class="row-3-images">
+        <img src="{% static 'images/carnaval3.jpg' %}" alt="Carnaval 3">
+        <img src="{% static 'images/carnaval4.jpg' %}" alt="Carnaval 4">
+        <img src="{% static 'images/carnaval5.jpg' %}" alt="Carnaval 5">
+    </div>
+    
+    <!-- Sección de Noticias y Eventos en columnas -->
+    <section class="noticias-section">
+        <h2>¿Qué hay de nuevo?</h2>
+        <div class="noticias-content">
+    
+        <!-- Columna de Noticias -->
+        <div class="col-noticias">
+            <h3>Noticias</h3>
+            {% for noticia in noticias %}
+            <div class="noticia-item">
+            <!-- Imagen de la noticia (puedes hacerla dinámica si cada noticia tiene su propia imagen) -->
+            <img src="{% static 'images/carnaval8.png' %}" alt="Imagen Noticia">
+    
+            <!-- Título y descripción de la noticia -->
+            <h4>{{ noticia.titulo }}</h4>
+            <p>{{ noticia.descripcion }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Columna de Eventos -->
+        <div class="col-eventos">
+            <h3>Eventos</h3>
+            {% for evento in eventos %}
+            <div class="evento-item">
+            <!-- Imagen del evento (puedes hacerla dinámica si cada evento tiene su propia imagen) -->
+            <img src="{% static 'images/concierto.jpg' %}" alt="Imagen Evento">
+    
+            <!-- Texto del evento (localidad, descripción, fechas, etc.) -->
+            <div class="evento-text">
+                <h4>{{ evento.nombre }}</h4>
+                <p>Localidad: {{ evento.localidad.nombre }}</p>
+                <p>Descripción: {{ evento.descripcion }}</p>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        </div>
+    </section>
+  
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
