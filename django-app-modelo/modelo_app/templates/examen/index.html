@@ -8,49 +8,62 @@
 
 {% block content %}
 
-    <div class="row-2-images">
-        <img src="{% static 'images/carnaval6.png' %}" alt="Carnaval 1">
-        <img src="{% static 'images/carnaval2.jpg' %}" alt="Carnaval 2">
+    <div class="main-container">
+        <div class="row">
+            <div class="image-container large">
+                <img src="{% static 'images/carnaval6.png' %}" alt="Imagen 1">
+            </div>
+            <div class="image-container large">
+                <img src="{% static 'images/carnaval2.jpg' %}" alt="Imagen 2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="image-container small">
+                <img src="{% static 'images/carnaval3.jpg' %}" alt="Imagen 3">
+            </div>
+            <div class="image-container small">
+                <img src="{% static 'images/carnaval4.jpg' %}" alt="Imagen 4">
+            </div>
+            <div class="image-container medium">
+                <img src="{% static 'images/carnaval5.jpg' %}" alt="Imagen 5">
+            </div>
+        </div>
     </div>
-    
-    <div class="row-3-images">
-        <img src="{% static 'images/carnaval3.jpg' %}" alt="Carnaval 3">
-        <img src="{% static 'images/carnaval4.jpg' %}" alt="Carnaval 4">
-        <img src="{% static 'images/carnaval5.jpg' %}" alt="Carnaval 5">
-    </div>
-    
+  
     <section class="noticias-section">
-        <h2>¿Qué hay de nuevo?</h2>
+        <h2>NOTICIAS</h2>
         <div class="noticias-content">
-
-        <div class="col-noticias">
-            <h3>Noticias</h3>
-            {% for noticia in noticias %}
-            <div class="noticia-item">
-            <img src="{% static 'images/carnaval8.png' %}" alt="Imagen Noticia">
-            <h4>{{ noticia.titulo }}</h4>
-            <p>{{ noticia.descripcion }}</p>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="col-eventos">
-            <h3>Eventos</h3>
-            {% for evento in eventos %}
-            <div class="evento-item">
-            <img src="{% static 'images/concierto.jpg' %}" alt="Imagen Evento">
     
-            <div class="evento-text">
-                <h4>{{ evento.nombre }}</h4>
-                <p>Localidad: {{ evento.localidad.nombre }}</p>
-                <p>Descripción: {{ evento.descripcion }}</p>
+            <div class="col-noticias">
+                {% for noticia in noticias %}
+                <div class="noticia-item">
+                    <img src="{% static 'images/carnaval8.png' %}" alt="Imagen Noticia">
+                    <div class="noticia-text">
+                        <h4>{{ noticia.titulo }}</h4>
+                        <p>{{ noticia.descripcion }}</p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
+    
+            <div class="col-eventos">
+                {% for evento in eventos %}
+                <div class="evento-item">
+                    <img src="{% static 'images/concierto.jpg' %}" alt="Imagen Evento">
+                    <div class="evento-text">
+                        <h4>{{ evento.nombre }}</h4>
+                        <p><strong>Localidad:</strong> {{ evento.localidad.nombre }}</p>
+                        <p><strong>Descripción:</strong></p>
+                        <p>{{ evento.descripcion }}</p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
     
         </div>
     </section>
+    
   
 {% endblock %}
 

@@ -6,7 +6,7 @@
         <title>Document</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/base/header.css' %}">
-        <link rel="stylesheet" href="{% static 'css/base/footer.css' %}">
+        
         {% block styles %}
         {% endblock %}
     </head>
@@ -16,7 +16,7 @@
             {% block content %}
             {% endblock %}
         </main>
-        {% include 'base/footer.html' %}
+        
     </body>
     {% block scripts %}
     {% endblock %}
