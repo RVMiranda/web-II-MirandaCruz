@@ -1,0 +1,14 @@
+{% load static %}
+<div class="boletos-container">
+    <div class="boleto-item">
+        <img src="{% static 'images/' %}{{ boleto.tipo_boleto.nombre|lower }}.png" alt="{{ boleto.tipo_boleto.nombre }}">
+
+        <p class="boleto-evento">{{ boleto.evento.nombre }}</p>
+
+        <p class="boleto-tipo">{{ boleto.tipo_boleto.nombre }}</p>
+
+        <p class="boleto-precio">Precio: ${{ boleto.precio }}</p>
+            
+        <button class="boleto-comprar">Comprar</button>
+    </div>
+</div>
