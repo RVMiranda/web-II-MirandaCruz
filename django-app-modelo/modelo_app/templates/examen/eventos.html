@@ -9,25 +9,14 @@
 {% block content %}
 
 <h1>Eventos</h1>
-<div class="eventos-container">
+<div class="btn-container">
+    <a href="" class="btn-Crear">Crear Evento</a>
+</div>
+<div class="eventos">
     {% for evento in eventos %}
-        <div class="evento-card">
-            <div class="evento-img">
-                <img src="{% static 'images/carnaval5.jpg' %}" alt="Imagen de {{ evento.nombre }}">
-            </div>
-
-            <div class="evento-info">
-                <h2>{{ evento.nombre }}</h2>
-                <p><strong>Localidad:</strong> {{ evento.localidad.nombre }}</p>
-                <p><strong>Descripción:</strong></p>
-                <p>{{ evento.descripcion }}</p>
-                <p><strong>Fecha:</strong> {{ evento.fecha_inicio|date:"d/m/Y" }} - {{ evento.fecha_fin|date:"d/m/Y" }}</p>
-                <a href="{% url 'Boletos' %}" class="evento-boton">Boletos</a>
-            </div>
-        </div>
+        {% include 'components/eventoCard.html' with evento=evento %}
     {% endfor %}
 </div>
-
 {% endblock %}
 
 {% block scripts %}
