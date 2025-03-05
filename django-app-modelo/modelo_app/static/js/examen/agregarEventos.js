@@ -76,18 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function actualizarTablaEventos() {
         const tablaBody = document.querySelector("#tablaEventos tbody");
-        if (!tablaBody) {  // 🔹 Evita error si el tbody no existe
+    
+        if (!tablaBody) {
             console.error("Error: No se encontró la tabla de eventos en el DOM.");
             return;
         }
     
-        fetch(EVENTO_LIST_URL)  // 🔹 Nueva URL para obtener eventos actualizados
+        fetch(EVENTO_LIST_URL)  // 🔹 Obtener eventos actualizados
         .then(response => response.json())
         .then(data => {
             console.log("Eventos actualizados:", data);
-            const tablaBody = document.querySelector("#tablaEventos tbody");
             tablaBody.innerHTML = "";  // 🔹 Limpiamos la tabla
-
+    
             data.forEach(evento => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
@@ -99,10 +99,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
                 tablaBody.appendChild(fila);
             });
-
-            //agregarEventosEliminar();  // 🔹 Reasignamos eventos al botón de eliminar
+    
+            // 🔹 Asignar eventos de eliminación a los botones
+            document.querySelectorAll(".eliminar-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    const eventoId = this.getAttribute("data-id");
+                    eliminarEvento(eventoId);
+                });
+            });
         })
         .catch(error => console.error("Error al actualizar la tabla:", error));
+    }
+    
+
+    function eliminarEvento(eventoId) {
+        const confirmacion = confirm("¿Estás seguro de que deseas eliminar este evento?");
+        if (!confirmacion) return;
+    
+        fetch(`${EVENTO_DELETE_URL}${eventoId}/`, {
+            method: "DELETE",
+            headers: { "X-CSRFToken": getCSRFToken() }
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(err => { throw new Error(err) });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("✅ Respuesta del servidor:", data);
+            alert(data.mensaje || "Evento eliminado correctamente");
+            actualizarTablaEventos();  // 🔹 Recargar la tabla sin refrescar la página
+        })
+        .catch(error => console.error("🚨 Error al eliminar evento:", error));
     }
 
     actualizarTablaEventos();

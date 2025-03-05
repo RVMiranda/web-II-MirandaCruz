@@ -5,6 +5,7 @@ from django.utils.timezone import now, make_aware
 import traceback
 from datetime import datetime, timedelta
 import json
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def homeIndex(request):
     return render(request, 'home/index.html')
@@ -79,7 +80,7 @@ def agregarEventoView(request):
             return JsonResponse({"error": "Error al procesar JSON recibido."}, status=400)
         except Exception as e:
             print("🚨 ERROR EN DJANGO 🚨")
-            traceback.print_exc()  # 🔴 Muestra el error exacto en consola
+            traceback.print_exc()
             return JsonResponse({'error': str(e)}, status=500)
 
     ultimosEventos = Evento.objects.order_by('-id')[:5]
@@ -87,7 +88,7 @@ def agregarEventoView(request):
     return render(request, 'examen/agregarEvento.html', {'ultimosEventos': ultimosEventos, 'localidades': localidades})
 
 def obtenerEvento(request):
-    eventos = Evento.objects.order_by('-id')[:5]  # 🔹 Obtener los últimos 5 eventos
+    eventos = Evento.objects.order_by('-id')[:5]
     eventos_json = [
         {
             "id": evento.id,
@@ -99,3 +100,14 @@ def obtenerEvento(request):
         for evento in eventos
     ]
     return JsonResponse(eventos_json, safe=False)
+
+def eliminarEvento(request, evento_id):
+    if request.method == 'DELETE':
+        try:
+            evento = get_object_or_404(Evento, id=evento_id)
+            evento.delete()
+            return JsonResponse({'mensaje': 'Evento eliminado correctamente'})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)

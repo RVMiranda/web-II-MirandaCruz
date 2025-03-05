@@ -59,5 +59,6 @@
 <script>
     const EVENTO_CREATE_URL = "{% url 'AgregarEvento' %}";
     const EVENTO_LIST_URL = "{% url 'ObtenerEvento' %}";
+    const EVENTO_DELETE_URL = "{% url 'EliminarEvento' evento_id=0 %}".replace("0/", ""); 
 </script>
 {% endblock %}
