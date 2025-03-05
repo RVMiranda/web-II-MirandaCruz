@@ -10,7 +10,7 @@
 
 <h1>Eventos</h1>
 <div class="btn-container">
-    <a href="" class="btn-Crear">Crear Evento</a>
+    <a href="{% url 'AgregarEvento' %}" class="btn-Crear">Agregar evento</a>
 </div>
 <div class="eventos">
     {% for evento in eventos %}

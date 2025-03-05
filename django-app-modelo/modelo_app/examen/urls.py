@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.examenIndex, name='examenIndex'),
     path('boletos/', views.boletosView, name='Boletos'),
     path('eventos/', views.eventosView, name='Eventos'),
-    
+    path('eventos/agregar_evento/', views.agregarEventoView, name='AgregarEvento'),
+    path('eventos/obtener_eventos/', views.obtenerEvento, name='ObtenerEvento'),  
 ]
