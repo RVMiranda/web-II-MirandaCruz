@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             console.error("❌ Error en la solicitud:", error);
-            alert("❌ Error al agregar el producto.");
+            alert("❌ Error al agregar el producto. Revisa las reglas");
         });
     });
 
@@ -125,4 +125,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     actualizarTablaProductos();
+
+    function mostrarMensaje(mensaje, esError = false) {
+        const mensajeElemento = document.getElementById("mensaje");
+        if (!mensajeElemento) return;
+    
+        mensajeElemento.textContent = mensaje;
+        mensajeElemento.style.color = esError ? "red" : "green";
+    
+        setTimeout(() => {
+            mensajeElemento.textContent = "";
+        }, 3000);
+    }
+    
 });

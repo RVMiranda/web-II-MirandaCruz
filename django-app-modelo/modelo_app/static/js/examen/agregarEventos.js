@@ -9,9 +9,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const fecha_inicio = document.getElementById('fecha_inicio').value;
     const fecha_fin = document.getElementById('fecha_fin').value;
     const localidad = document.getElementById('localidad').value;
+    const fechaInicioDate = new Date(fecha_inicio);
+    const fechaFinDate = new Date(fecha_fin);
+    const fechaActual = new Date();
 
     if (!nombre || !descripcion || !fecha_inicio || !fecha_fin || !localidad) {
         mostrarMensaje("Todos los campos son obligatorios.", true);
+        return;
+    }
+
+    if (fechaInicioDate <= fechaActual) {
+        mostrarMensaje("❌ La fecha de inicio debe ser mayor a la fecha actual.", true);
+        return;
+    }
+
+    if (fechaFinDate <= fechaInicioDate) {
+        mostrarMensaje("❌ La fecha de fin debe ser mayor a la fecha de inicio.", true);
         return;
     }
 
@@ -49,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => {
                 console.error("Error en la solicitud:", error);
-                alert("Error: " + error.message);
+                alert("❌ Error al agregar evento: Revisa las reglas " + error.message);
             });
     });
 
@@ -131,5 +144,17 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("🚨 Error al eliminar evento:", error));
     }
 
+    function mostrarMensaje(mensaje, esError = false) {
+        const mensajeElemento = document.getElementById("mensaje");
+        if (!mensajeElemento) return;
+    
+        mensajeElemento.textContent = mensaje;
+        mensajeElemento.style.color = esError ? "red" : "green";
+    
+        setTimeout(() => {
+            mensajeElemento.textContent = "";
+        }, 3000);
+    }
+    
     actualizarTablaEventos();
 });
