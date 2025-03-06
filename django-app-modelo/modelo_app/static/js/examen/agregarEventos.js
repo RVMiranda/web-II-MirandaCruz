@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localidad_id: parseInt(localidad)
     };
         console.log("Datos enviados:", data);
-        // Obtener el token CSRF desde la cookie
         const csrftoken = getCSRFToken();
 
         fetch(EVENTO_CREATE_URL, {
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken, // Corrección aquí
+                "X-CSRFToken": csrftoken,
             },
             body: JSON.stringify(data),
         })
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
-    // Función para obtener el CSRF Token de las cookies
     function getCSRFToken() {
         let csrfToken = null;
         document.cookie.split(";").forEach(cookie => {
@@ -82,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
     
-        fetch(EVENTO_LIST_URL)  // 🔹 Obtener eventos actualizados
+        fetch(EVENTO_LIST_URL)
         .then(response => response.json())
         .then(data => {
             console.log("Eventos actualizados:", data);
-            tablaBody.innerHTML = "";  // 🔹 Limpiamos la tabla
+            tablaBody.innerHTML = ""; 
     
             data.forEach(evento => {
                 const fila = document.createElement("tr");
@@ -100,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 tablaBody.appendChild(fila);
             });
     
-            // 🔹 Asignar eventos de eliminación a los botones
             document.querySelectorAll(".eliminar-btn").forEach(button => {
                 button.addEventListener("click", function () {
                     const eventoId = this.getAttribute("data-id");
@@ -129,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log("✅ Respuesta del servidor:", data);
             alert(data.mensaje || "Evento eliminado correctamente");
-            actualizarTablaEventos();  // 🔹 Recargar la tabla sin refrescar la página
+            actualizarTablaEventos();
         })
         .catch(error => console.error("🚨 Error al eliminar evento:", error));
     }
