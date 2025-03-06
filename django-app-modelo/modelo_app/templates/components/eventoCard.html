@@ -11,7 +11,7 @@
             <p><strong>Descripción:</strong></p>
             <p>{{ evento.descripcion }}</p>
             <p><strong>Fecha:</strong> {{ evento.fecha_inicio|date:"d/m/Y" }} - {{ evento.fecha_fin|date:"d/m/Y" }}</p>
-            <a href="{% url 'Boletos' %}" class="evento-boton">Boletos</a>
+            <a href="{% url 'BoletosPorEvento' evento.id %}" class="evento-boton">Boletos</a>
         </div>
     </div>
 </div>

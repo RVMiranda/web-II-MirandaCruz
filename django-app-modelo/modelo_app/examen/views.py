@@ -111,3 +111,12 @@ def eliminarEvento(request, evento_id):
             return JsonResponse({'error': str(e)}, status=500)
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+def boletosPorEventoView(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
+    boletos = Boleto.objects.filter(evento=evento).select_related('tipo_boleto')
+
+    if not boletos.exists():
+        return render(request, 'examen/boletosEvento.html', {'evento': evento, 'boletos': None})
+
+    return render(request, 'examen/boletosEvento.html', {'evento': evento, 'boletos': boletos})

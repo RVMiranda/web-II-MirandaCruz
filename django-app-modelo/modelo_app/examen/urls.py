@@ -8,4 +8,5 @@ urlpatterns = [
     path('eventos/agregar_evento/', views.agregarEventoView, name='AgregarEvento'),
     path('eventos/obtener_eventos/', views.obtenerEvento, name='ObtenerEvento'),  
     path('eventos/eliminar_evento/<int:evento_id>/', views.eliminarEvento, name='EliminarEvento'),
+    path('eventos/boletos_evento/<int:evento_id>/', views.boletosPorEventoView, name='BoletosPorEvento'),
 ]

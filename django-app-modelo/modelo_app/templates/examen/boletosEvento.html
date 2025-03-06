@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %} Boletos{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/examen/boletos.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Boletos Disponibles para {{evento.nombre}}</h1>
+    <div class="containerPrincipal">
+        {% if boletos %}
+        <div class="boletos-container">
+            {% for boleto in boletos %}
+                <div class="boleto-item">
+                    <img src="{% static 'images/' %}{{ boleto.tipo_boleto.nombre|lower }}.png" alt="{{ boleto.tipo_boleto.nombre }}">
+                    <p class="boleto-tipo"><strong>Tipo:</strong> {{ boleto.tipo_boleto.nombre }}</p>
+                    <p class="boleto-precio"><strong>Precio:</strong> ${{ boleto.precio }}</p>
+                    <button class="boleto-comprar">Comprar</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="mensaje-error">Sin boletos disponibles para este evento.</p>
+    {% endif %}
+    </div>
+    
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}
