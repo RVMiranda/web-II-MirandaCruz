@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Agregar Evento{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/examen/AgregarProducto.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="containerPrincipal">
+    <div class="form-container">
+        <h2> Agregar Producto </h2>
+        <form id="producto-form">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label>Precio:</label>
+            <input type="number" id="precio" step="0.01" required>
+
+            <label>Localidad:</label>
+            <select id="localidad" required>
+                {% for localidad in localidades %}
+                    <option value="{{ localidad.id }}">{{ localidad.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <button id="crearButton" type="submit">Agregar</button>
+        </form>
+        <p id="mensaje" class="mensaje"></p>
+    </div>
+    <div class="reglas">
+        <h2>Reglas</h2>
+        <p> Ningun campo puede quedar vacio. </p>
+        <p> El precio del producto debe ser mayor a cero. </p>
+        <p> Solo se pueden agregar 10 productos por día. </p>
+        <p> Se mostraran mensajes de guardado o de error. </p>
+    </div>
+</div>
+
+<div class="tablaConainer">
+    <h2>Productos recientemente agregados</h2>
+    <table id="tablaProductos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Localidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="eventos-lista">
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/examen/AgregarProductos.js' %}"></script>
+<script>
+    const PRODUCTO_CREATE_URL = "{% url 'AgregarProducto' %}";
+    const PRODUCTO_LIST_URL = "{% url 'ObtenerProductos' %}";
+    const PRODUCTO_DELETE_URL = "{% url 'EliminarProducto' producto_id=0 %}".replace("0/", ""); 
+</script>
+{% endblock %}

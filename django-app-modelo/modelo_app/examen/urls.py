@@ -9,4 +9,7 @@ urlpatterns = [
     path('eventos/obtener_eventos/', views.obtenerEvento, name='ObtenerEvento'),  
     path('eventos/eliminar_evento/<int:evento_id>/', views.eliminarEvento, name='EliminarEvento'),
     path('eventos/boletos_evento/<int:evento_id>/', views.boletosPorEventoView, name='BoletosPorEvento'),
+    path('productos/agregar_producto/', views.agregarProductoView, name='AgregarProducto'),
+    path('productos/obtener_productos/', views.obtenerProductos, name='ObtenerProductos'),
+    path('productos/eliminar_producto/<int:producto_id>/', views.eliminarProducto, name='EliminarProducto'),
 ]

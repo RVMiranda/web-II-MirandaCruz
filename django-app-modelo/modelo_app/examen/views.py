@@ -120,3 +120,60 @@ def boletosPorEventoView(request, evento_id):
         return render(request, 'examen/boletosEvento.html', {'evento': evento, 'boletos': None})
 
     return render(request, 'examen/boletosEvento.html', {'evento': evento, 'boletos': boletos})
+
+def agregarProductoView(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            nombre = data.get("nombre")
+            precio = data.get("precio")
+            localidad_id = data.get("localidad_id")
+
+            if not nombre or not precio or not localidad_id:
+                return JsonResponse({"error": "Todos los campos son obligatorios."}, status=400)
+
+            if float(precio) <= 0:
+                return JsonResponse({"error": "El precio debe ser mayor a 0."}, status=400)
+
+            productos_hoy = Producto.objects.filter(fecha_creacion__date=now().date()).count()
+            if productos_hoy >= 10:
+                return JsonResponse({"error": "Solo puedes agregar 10 productos por día."}, status=400)
+
+            localidad = get_object_or_404(Localidad, id=int(localidad_id))
+            producto = Producto.objects.create(nombre=nombre, precio=precio, localidad=localidad)
+
+            return JsonResponse({"mensaje": "Producto agregado correctamente.", "producto_id": producto.id})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Error al procesar JSON recibido."}, status=400)
+        except Exception as e:
+            print("🚨 ERROR EN DJANGO 🚨")
+            traceback.print_exc()
+            return JsonResponse({'error': str(e)}, status=500)
+
+    productos = Producto.objects.order_by('-id')[:5]
+    localidades = Localidad.objects.all()
+    return render(request, "examen/agregarProducto.html", {"productos": productos, "localidades": localidades})
+
+def obtenerProductos(request):
+    productos = Producto.objects.order_by('-id')[:5]
+    productos_json = [
+        {
+            "id": producto.id,
+            "nombre": producto.nombre,
+            "precio": producto.precio,
+            "localidad": producto.localidad.nombre
+        }
+        for producto in productos
+    ]
+    return JsonResponse(productos_json, safe=False)
+
+def eliminarProducto(request, producto_id):
+    if request.method == 'DELETE':
+        try:
+            producto = get_object_or_404(Producto, id=producto_id)
+            producto.delete()
+            return JsonResponse({'mensaje': 'Producto eliminado correctamente'})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)

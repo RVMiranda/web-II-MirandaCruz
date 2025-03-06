@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 class Localidad(models.Model):
     nombre = models.CharField(max_length=100, null=False, blank=False)
@@ -12,6 +13,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200)
     precio = models.FloatField()
     localidad = models.ForeignKey(Localidad, on_delete=models.CASCADE, null=True, blank=True)
+    fecha_creacion = models.DateTimeField(default=now)
 
     def __str__(self):
         return self.nombre
