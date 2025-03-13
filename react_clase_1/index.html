@@ -9,7 +9,7 @@
         <!-- Agregar el script de Babel -->
         <script src="https://unpkg.com/@babel/standalone"></script>
         <script type="text/babel" src="components/MyButton.js"></script>
-        <script rel="stylesheet" src="CSS/style.css"></script>
+        <link rel="stylesheet" src="CSS/style.css"></link>
     </head>
     <body>
         <div id="root">
@@ -28,51 +28,59 @@
         
         function App() {
             const {useState} = React;
+
             const [contador, setContador] = useState(0);
             const [contador2, setContador2] = useState(0);
+
             const [visible, setVisible] = useState(false);
-            const [alumnos, setAlumnos] = useState(['Eduardo', 'Ingrid', 'Bety', 'Diego', 'Pablinho']);
+            
             const [alumnoCalificacion, setAlumnoCalificacion] = useState([
-                {nombre: 'Eduardo', calificacion: 10},
+                {nombre: 'Eduardinho', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Pablinho', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Ingrid', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Dieginho', calificacion: 9, materia: 'Programacion web II'},
+                {nombre: 'Bety', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Renzinho', calificacion: 9, materia: 'Programacion web II'},
+                {nombre: 'Fernando', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Angel', calificacion: 7, materia: 'Programacion web II'},
+                {nombre: 'Gael', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Gonzalo', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Daniel', calificacion: 7, materia: 'Programacion web II'},
+
             ]);
-            function verParrafo(){
-            setVisible(!visible)
-        }
+
+            const alumnos = [
+                { nombre: "Eduardinho", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Pablinho", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Ingrid", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Dieginho", calificacion: 9, materia: "Programación Web II" },
+                { nombre: "Bety", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Renzinho", calificacion: 9, materia: "Programación Web II" },
+                { nombre: "Fernando", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Angel", calificacion: 7, materia: "Programación Web II" },
+                { nombre: "Gael", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Gonzalo", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Daniel", calificacion: 7, materia: "Programación Web II" },
+            ];
+                 
             return (
-                <div>
+                <div className="container">
                     <h1>Hola Mundo</h1>
-                    <p>Este es un ejemplo de un componente React</p> 
+                    <p>Este es un ejemplo de un componente React</p>
+                    
                     <MyButton titulo="Saludar" Contador={contador} setContador={setContador}/>
-                    <h2> Contador-1 {contador} </h2>
+                    <h2> Contador-1 = {contador} clicks </h2>
                     <MyButton titulo="Despedir" Contador={contador2} setContador={setContador2}/>
-                    <h2> Contador-2 {contador2}</h2>
+                    <h2> Contador-2 = {contador2} clicks </h2>
 
-                    <button onClick={verParrafo}> Ver parrafo</button>
-
-                    <div className="container">
-                        
-                        <div style={{display: visible ? 'block' : 'none'}}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
-                        </div>
-                        <div style={{display: visible ? 'block' : 'none'}}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
-                        </div>
-                        <div style={{display: visible ? 'block' : 'none'}}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
-                        </div>
-                        
-                        {alumnos.map((alumno, index) => {
-                            return(
-                                <div style={{display: visible ? 'block' : 'none'}}>
-                                    {alumno}
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <h2> Datos de los alumnos </h2>
+                    <div className="alumno">
+                        <AlumnoInfo alumnos={alumnos} />
+                    </div>                   
                     
                 </div>
             );
-        }
+        }       
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
