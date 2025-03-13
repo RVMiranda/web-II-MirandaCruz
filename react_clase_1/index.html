@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <!-- Agregar el script de Babel -->
+        <script src="https://unpkg.com/@babel/standalone"></script>
+        <script type="text/babel" src="components/MyButton.js"></script>
+        <script rel="stylesheet" src="CSS/style.css"></script>
+    </head>
+    <body>
+        <div id="root">
+            
+        </div>
+    </body>
+
+    <script type="text/babel">
+        
+        function saludar(params) {
+            alert('Hola Mundo');
+        }
+        function despedir(params) {
+            alert('Eduardo, Eduardo que carajos haces?');
+        }
+        
+        function App() {
+            const {useState} = React;
+            const [contador, setContador] = useState(0);
+            const [contador2, setContador2] = useState(0);
+            const [visible, setVisible] = useState(false);
+            const [alumnos, setAlumnos] = useState(['Eduardo', 'Ingrid', 'Bety', 'Diego', 'Pablinho']);
+            const [alumnoCalificacion, setAlumnoCalificacion] = useState([
+                {nombre: 'Eduardo', calificacion: 10},
+            ]);
+            function verParrafo(){
+            setVisible(!visible)
+        }
+            return (
+                <div>
+                    <h1>Hola Mundo</h1>
+                    <p>Este es un ejemplo de un componente React</p> 
+                    <MyButton titulo="Saludar" Contador={contador} setContador={setContador}/>
+                    <h2> Contador-1 {contador} </h2>
+                    <MyButton titulo="Despedir" Contador={contador2} setContador={setContador2}/>
+                    <h2> Contador-2 {contador2}</h2>
+
+                    <button onClick={verParrafo}> Ver parrafo</button>
+
+                    <div className="container">
+                        
+                        <div style={{display: visible ? 'block' : 'none'}}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
+                        </div>
+                        <div style={{display: visible ? 'block' : 'none'}}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
+                        </div>
+                        <div style={{display: visible ? 'block' : 'none'}}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aperiam ullam! Numquam distinctio provident explicabo facere assumenda harum, voluptatem recusandae. Ab tenetur quos molestias distinctio quasi eos suscipit maiores velit.</p>
+                        </div>
+                        
+                        {alumnos.map((alumno, index) => {
+                            return(
+                                <div style={{display: visible ? 'block' : 'none'}}>
+                                    {alumno}
+                                </div>
+                            )
+                        })}
+                    </div>
+                    
+                </div>
+            );
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</html>
