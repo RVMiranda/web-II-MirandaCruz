@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <!-- Agregar el script de Babel -->
+        <script src="https://unpkg.com/@babel/standalone"></script>
+        <script type="text/babel" src="components/MyButton.js"></script>
+        <link rel="stylesheet" href="/CSS/style.css">
+    </head>
+    <body>
+        <div id="root">
+            
+        </div>
+    </body>
+
+    <script type="text/babel">
+        
+        function saludar(params) {
+            alert('Hola Mundo');
+        }
+        function despedir(params) {
+            alert('Eduardo, Eduardo que carajos haces?');
+        }
+        
+        function App() {
+            const {useState} = React;
+
+            const [contador, setContador] = useState(0);
+            const [contador2, setContador2] = useState(0);
+
+            const [visible, setVisible] = useState(false);
+            
+            const [alumnoCalificacion, setAlumnoCalificacion] = useState([
+                {nombre: 'Eduardinho', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Pablinho', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Ingrid', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Dieginho', calificacion: 9, materia: 'Programacion web II'},
+                {nombre: 'Bety', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Renzinho', calificacion: 9, materia: 'Programacion web II'},
+                {nombre: 'Fernando', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Angel', calificacion: 7, materia: 'Programacion web II'},
+                {nombre: 'Gael', calificacion: 8, materia: 'Programacion web II'},
+                {nombre: 'Gonzalo', calificacion: 10, materia: 'Programacion web II'},
+                {nombre: 'Daniel', calificacion: 7, materia: 'Programacion web II'},
+
+            ]);
+
+            const alumnos = [
+                { nombre: "Eduardinho", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Pablinho", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Ingrid", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Dieginho", calificacion: 9, materia: "Programación Web II" },
+                { nombre: "Bety", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Renzinho", calificacion: 9, materia: "Programación Web II" },
+                { nombre: "Fernando", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Angel", calificacion: 7, materia: "Programación Web II" },
+                { nombre: "Gael", calificacion: 8, materia: "Programación Web II" },
+                { nombre: "Gonzalo", calificacion: 10, materia: "Programación Web II" },
+                { nombre: "Daniel", calificacion: 7, materia: "Programación Web II" },
+            ];
+                 
+            return (
+                <div className="container">
+                    <h1>Hola Mundo</h1>
+                    <p>Este es un ejemplo de un componente React</p>
+                    
+                    <MyButton titulo="Saludar" Contador={contador} setContador={setContador}/>
+                    <h2> Contador-1 = {contador} clicks </h2>
+                    <MyButton titulo="Despedir" Contador={contador2} setContador={setContador2}/>
+                    <h2> Contador-2 = {contador2} clicks </h2>
+
+                    <h2> Datos de los alumnos </h2>
+                    <div className="alumno">
+                        <AlumnoInfo alumnos={alumnos} />
+                    </div>                   
+                    
+                </div>
+            );
+        }       
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</html>
