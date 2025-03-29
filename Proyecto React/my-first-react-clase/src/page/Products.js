@@ -2,6 +2,7 @@ import ProductListItem from "../components/ProductListItem"
 import { useNavigate } from "react-router-dom";
 import ValidateLogin from "../utils/ValidateLogin";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 /*export default function Products() {
     return (
         <div>
@@ -48,6 +49,9 @@ export default function Products(){
   const [productId, setProductId] = useState(null);
   const [word, setWord] = useState(null);
   const [newProduct, setNewProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
 
@@ -57,8 +61,17 @@ export default function Products(){
   useEffect(() => {
     
     const fetchProducts = async () => {
-      const data = await getProducts();
-      setProducts(data.products);
+      setLoading(true);
+      try {
+        const data = await getProducts();
+        setProducts(data.products);
+      } catch (error) {
+        setErrorMessage(error.message);
+      } finally {
+        setLoading(false);
+      }
+      //const data = await getProducts();
+      //setProducts(data.products);
     }
     fetchProducts();
   }, []);
@@ -68,8 +81,17 @@ export default function Products(){
     if (!hasWord) return;
 
     const fetchProductsByWord = async () => {
-      const data = await getProductsByWord(word);
-      setProducts(data.products);
+      setLoading(true);
+      try {
+        const data = await getProductsByWord(word);
+        setProducts(data.products);
+      } catch (error) {
+        setErrorMessage(error.message);
+      } finally {
+        setLoading(false);
+      }
+      //const data = await getProductsByWord(word);
+      //setProducts(data.products);
     }
 
     fetchProductsByWord();
@@ -78,21 +100,32 @@ export default function Products(){
   return (
     <div>
       <h1>Products</h1>
-      <div>
-        <input type="text" placeholder="Search" onChange={(e) => setWord(e.target.value)} />
-      </div>
       <div className="container-products">
-        {products && products.map( (item) => {
-          return (
-            <ProductListItem 
-            title={item.title} 
-            id={item.id}
-            description={item.description} 
-            images={item.images} 
-            />
-           
+        <input type="text" placeholder="Search" onChange={(e) => setWord(e.target.value)} />
+        {loading ? (
+          <p> Cargando...</p>
+        ) : errorMessage ? (
+          <p>{errorMessage}</p>
+        ) : (
+          products && products.length === 0 ? (
+            <p>No se encontraron productos</p>
+          ) : products ? (
+            <>
+              <p>Total encontrados: {products.length}</p>
+              {products.map((item) => (
+                <ProductListItem 
+                  key={item.id}
+                  title={item.title} 
+                  id={item.id}
+                  description={item.description} 
+                  images={item.images} 
+                />
+              ))}
+            </>
+          ) : (
+            <p>No se encontraron productos</p>
           )
-        })}
+        )}
       </div>
     </div>
   )
