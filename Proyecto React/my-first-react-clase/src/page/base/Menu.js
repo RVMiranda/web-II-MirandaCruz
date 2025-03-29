@@ -3,7 +3,7 @@ import MyRouters from "../../router/Router";
 
 export default function Menu() {
     const location = useLocation();
-    const restrictedPaths = ["/login"];
+    const restrictedPaths = ["/"];
 
     const allowed = restrictedPaths.indexOf(location.pathname) === -1;
     return (
@@ -13,10 +13,7 @@ export default function Menu() {
                 <nav>
                 <ul>
                     <li>
-                    <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                    <Link to="/login"> Login </Link>
+                    <Link to="/home">Home</Link>
                     </li>
                     <li>
                     <Link to="/products"> Products </Link>

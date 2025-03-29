@@ -1,6 +1,7 @@
 import ProductListItem from "../components/ProductListItem"
 import { useNavigate } from "react-router-dom";
 import ValidateLogin from "../utils/ValidateLogin";
+import { useEffect, useState } from "react";
 /*export default function Products() {
     return (
         <div>
@@ -13,6 +14,7 @@ import ValidateLogin from "../utils/ValidateLogin";
     )
 }*/
 
+/*
 export default function Products() {
     ValidateLogin();
     return (
@@ -39,3 +41,71 @@ export default function Products() {
       </div>
     );
   }
+  */
+
+export default function Products(){
+  const [products, setProducts] = useState(null);
+  const [productId, setProductId] = useState(null);
+  const [word, setWord] = useState(null);
+  const [newProduct, setNewProduct] = useState(null);
+
+  useEffect(() => {
+
+  }
+  )
+
+  useEffect(() => {
+    
+    const fetchProducts = async () => {
+      const data = await getProducts();
+      setProducts(data.products);
+    }
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const hasWord = word !== null && word !== undefined && word.length > 3;
+    if (!hasWord) return;
+
+    const fetchProductsByWord = async () => {
+      const data = await getProductsByWord(word);
+      setProducts(data.products);
+    }
+
+    fetchProductsByWord();
+  }, [word]);
+
+  return (
+    <div>
+      <h1>Products</h1>
+      <div>
+        <input type="text" placeholder="Search" onChange={(e) => setWord(e.target.value)} />
+      </div>
+      <div className="container-products">
+        {products && products.map( (item) => {
+          return (
+            <ProductListItem 
+            title={item.title} 
+            id={item.id}
+            description={item.description} 
+            images={item.images} 
+            />
+           
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+async function getProducts(){
+  const response = await fetch("https://dummyjson.com/products");
+  const data = await response.json();
+  return data;
+}
+
+async function getProductsByWord(word){
+  const response = await fetch(`https://dummyjson.com/products/search?q=${word}`);
+  const data = await response.json();
+  return data;
+}
