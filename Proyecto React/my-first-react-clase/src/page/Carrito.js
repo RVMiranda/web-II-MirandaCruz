@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "../style/carrito.css";
 
 export default function Carrito() {
   const [cart, setCart] = useState([]);

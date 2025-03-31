@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ValidateLogin from "../utils/ValidateLogin";
+import "../style/productDetail.css";
 
 export default function ProductDetail() {
     ValidateLogin();
@@ -81,31 +82,42 @@ export default function ProductDetail() {
 
   return (
     <div className="product-detail">
+      {/* Enlace al carrito en la parte superior izquierda */}
+      <a href="/carrito" className="cart-link">Ir al carrito</a>
+
       {loading ? (
         <div>Cargando...</div>
       ) : error ? (
         <div>{error}</div>
       ) : product ? (
         <div className="product-detail-container">
-          <h1>{product.title}</h1>
-          <img src={product.thumbnail} alt={product.title} />
-          <p>{product.description}</p>
-          <p>Precio: ${product.price}</p>
-          <p>Stock disponible: {product.stock}</p>
-          <div>
-            <label htmlFor="quantity">Cantidad:</label>
-            <input 
-              type="number" 
-              id="quantity" 
-              min="1" 
-              max={product.stock} 
-              value={quantity} 
-              onChange={(e) => setQuantity(Number(e.target.value))} 
-            />
+          <h1 className="product-title">{product.title}</h1>
+          <div className="product-content">
+            <img src={product.thumbnail} alt={product.title} className="product-image" />
+            <div className="product-info">
+              <p className="product-description">{product.description}</p>
+              <p className="product-price">Precio: ${product.price}</p>
+              <p className="product-stock">Stock disponible: {product.stock}</p>
+              <div className="product-quantity">
+                <label htmlFor="quantity">Cantidad:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  className="quantity-input"
+                  min="1"
+                  max={product.stock}
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                />
+              </div>
+              {/* Mensaje de confirmación o error del carrito */}
+              {cartMessage && <p className="cart-message">{cartMessage}</p>}
+            </div>
           </div>
-          <button onClick={addToCart}>AGREGAR AL CARRITO</button>
-          <a href="/carrito">Ir al carrito</a>
-          {cartMessage && <p>{cartMessage}</p>}
+          {/* Botón de agregar al carrito al final */}
+          <button onClick={addToCart} className="add-cart-button">
+            AGREGAR AL CARRITO
+          </button>
         </div>
       ) : null}
     </div>
