@@ -45,6 +45,7 @@ export default function Products() {
   */
 
 export default function Products(){
+  ValidateLogin();
   const [products, setProducts] = useState(null);
   const [productId, setProductId] = useState(null);
   const [word, setWord] = useState(null);
