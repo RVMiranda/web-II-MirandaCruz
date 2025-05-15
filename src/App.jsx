@@ -35,7 +35,7 @@ function App() {
     <>
       <div className="app">
         <header className="app-header">
-          <img src="/images/header.png" alt="Header" />
+          <div className="header-image"></div>
         </header>
 
           <main className="main-section">
