@@ -145,4 +145,107 @@
     max-width: 800px;
 }
 
+/* responsvo */
 
+@media (max-width: 768px) {
+    .detalle-container {
+        padding: 1.2rem 1rem;
+    }
+
+    .detalle-container h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .detalle-container p {
+        font-size: 0.95rem;
+    }
+
+    .detalle-img {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 15px;
+        margin: 0.8rem 0;
+    }
+
+    .detalle-header {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .btn-volver {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .btn-volver:hover {
+        background-color: #f9d15b;
+        color: white;
+    }
+
+    .detalle-instrucciones {
+        margin: 1rem 0;
+        padding: 0.8rem;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .detalle-info-linea {
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .detalle-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .detalle-links a {
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-restaurar {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .detalle-ingredientes {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+        max-width: 500px;
+        width: 100%;
+    }
+
+
+    .detalle-ingredientes li {
+        background-color: #1c1c2b;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        transition: background-color 0.2s;
+        cursor: pointer;
+    }
+
+
+    .detalle-ingredientes button {
+        font-size: 0.9rem;
+    }
+}
