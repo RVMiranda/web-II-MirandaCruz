@@ -170,3 +170,9 @@ body {
   color: #888;
   font-size: 1rem;
 }
+
+.grid-recetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
