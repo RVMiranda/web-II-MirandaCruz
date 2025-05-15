@@ -1,4 +1,4 @@
-#root {
+/*#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,134 @@
 
 .read-the-docs {
   color: #888;
+}
+*/
+/* src/App.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d1321;
+  color: white;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1b1b1b;
+  width: 100%;
+  height: auto;
+}
+
+.header-image img {
+  width: 50%;
+  height: 450px;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+.header-text h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtext {
+  color: #fcbf49;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.main-section {
+  display: flex;
+  align-items: flex-start; /* <-- esto alinea la barra de búsqueda arriba */
+  padding: 2rem 3rem;
+  gap: 2rem;
+}
+
+.category-sidebar {
+  width: 250px;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-right: 2rem;
+}
+
+.category-sidebar h2 {
+  margin-bottom: 1rem;
+}
+
+.category-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-sidebar li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.8rem;
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid #3a3a4f; /* borde gris */
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.category-sidebar li:hover {
+  background-color: #34344a;
+}
+
+.category-sidebar li.active {
+  background-color: #fcbf49;
+  color: #1c1c2b;
+}
+
+.category-sidebar li img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* RECIPES SECTION */
+
+.recipes-section {
+  padding-top: 2rem;
+  flex: 1;
+}
+
+.search-bar {
+  margin-bottom: 1.5rem;
+  position: relative;
+  max-width: 500px;
+  align-self: flex-start;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem; /* espacio para el ícono */
+  border-radius: 30px;
+  border: 1px solid #3a3a4f; /* borde gris */
+  font-size: 1rem;
+  background-color: #141625;
+  color: #fcbf49;
+}
+
+.search-bar input::placeholder {
+  color: #999;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+  font-size: 1rem;
 }
