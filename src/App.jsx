@@ -11,6 +11,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [search, setSearch] = useState("");
   const [meals, setMeals] = useState([]);
+  const [sortAsc, setSortAsc] = useState(true);
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
@@ -29,6 +30,10 @@ function App() {
       setMeals([]);
     }
   }, [activeCategory]);
+
+  const toggleSort = () => {
+    setSortAsc(!sortAsc);
+  };
 
 
   return (
@@ -64,7 +69,11 @@ function App() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
+                <div className="ordenar-wrapper">
+                  <button className="ordenar-btn" onClick={toggleSort}> Sort by: <strong>{sortAsc ? "Name ↑" : "Name ↓"}</strong> </button>
+                </div>
               </div>
+              
 
               {meals.length > 0 ? (
                 <div className="grid-recetas">
@@ -72,12 +81,17 @@ function App() {
                     .filter((meal) =>
                       meal.strMeal.toLowerCase().includes(search.toLowerCase())
                     )
+                    .sort((a, b) =>
+                      sortAsc
+                        ? a.strMeal.localeCompare(b.strMeal)
+                        : b.strMeal.localeCompare(a.strMeal)
+                    )
                     .map((meal) => (
                       <PlatilloCard key={meal.idMeal} meal={meal} />
                     ))}
                 </div>
                 ) : (
-                <p>Selecciona una categoría para ver recetas.</p>
+                <p>Selecciona una categoría para ver las recetas.</p>
               )}
             </section>
         </main>

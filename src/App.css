@@ -131,3 +131,119 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
+
+.ordenar-wrapper {
+  display: none;
+}
+
+.ordenar-btn {
+  padding: 0.6rem 1rem;
+  background-color: white;
+  color: #141625;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ordenar-btn:hover {
+  background-color: #f9d15b;
+}
+
+@media (max-width: 768px) {
+  .main-section {
+    flex-direction: column;
+    padding: 1rem;
+    
+  }
+
+  .category-sidebar {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-sidebar h2 {
+    margin-bottom: 0.7rem;
+  }
+
+  .category-sidebar ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.7rem;
+    row-gap: 0.2rem; /* ↓ antes estaba en 0.7rem */
+    padding: 0;
+    margin: 0;
+  }
+
+  .category-sidebar li {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.6rem;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    border: 1px solid #3a3a4f;
+    border-radius: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .category-sidebar li img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .recipes-section {
+    width: 100%;
+    padding-top: 0rem;
+  }
+
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .search-bar input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ordenar-wrapper {
+    display: block;
+  }
+
+  .ordenar-btn {
+    background-color: white;
+    color: #141625;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .ordenar-btn:hover {
+    background-color: #f9d15b;
+  }
+
+  .grid-recetas {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .app-header {
+    height: 220px;
+    margin-bottom: 1rem;
+    margin-bottom: -1.5rem;
+  }
+}
