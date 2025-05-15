@@ -6,6 +6,7 @@ import PlatilloCard from './components/platilloCard';
 
 
 function App() {
+  
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
   const [search, setSearch] = useState("");
@@ -33,14 +34,11 @@ function App() {
   return (
     <>
       <div className="app">
-        {/* Header con imagen */}
         <header className="app-header">
           <img src="/images/header.png" alt="Header" />
         </header>
 
-        {/* Sección de contenido */}
           <main className="main-section">
-          {/* CATEGORÍAS */}
             <aside className="category-sidebar">
               <h2>Categories</h2>
               <ul>
@@ -57,7 +55,6 @@ function App() {
               </ul>
             </aside>
 
-            {/* SECCIÓN DE RECETAS */}
             <section className="recipes-section">              
               <div className="search-bar">
                 <FontAwesomeIcon icon={faSearch} className="search-icon" />

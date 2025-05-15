@@ -1,26 +1,25 @@
-/* src/styles/platilloCard.css */
 .platillo-card {
-  background-color: #afafaf44;
-  border-radius: 12px;
-  padding: 0.5rem;
-  overflow: hidden;
-  transition: transform 0.2s;
-  cursor: pointer;
+    background-color: #afafaf44;
+    border-radius: 12px;
+    padding: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .platillo-card:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .platillo-card img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .platillo-card p {
-  margin: 0.5rem 0 0;
-  color: white;
-  font-weight: 500;
-  text-align: left;
+    margin: 0.5rem 0 0;
+    color: white;
+    font-weight: 500;
+    text-align: left;
 }
