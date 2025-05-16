@@ -27,8 +27,14 @@ export default function PlatilloDetail() {
                 lista.push(`${ingrediente} - ${medida}`);
             }
         }
-        setIngredientes(lista);
+        //setIngredientes(lista);
         setIngredientesOriginales(lista);
+        const ingredientesGuardados = localStorage.getItem(`ingredientes-${id}`);
+        if (ingredientesGuardados) {
+            setIngredientes(JSON.parse(ingredientesGuardados));
+        } else {
+            setIngredientes(lista);
+        }
         });
     }, [id]);
 
@@ -36,10 +42,13 @@ export default function PlatilloDetail() {
         const nuevaLista = [...ingredientes];
         nuevaLista.splice(index, 1);
         setIngredientes(nuevaLista);
+
+        localStorage.setItem(`ingredientes-${id}`, JSON.stringify(nuevaLista));
     };
 
     const restaurarIngredientes = () => {
         setIngredientes(ingredientesOriginales);
+        localStorage.setItem(`ingredientes-${id}`, JSON.stringify(ingredientesOriginales));
     };
 
     const ingredientesModificados = ingredientes.length !== ingredientesOriginales.length;
